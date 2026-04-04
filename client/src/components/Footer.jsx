@@ -6,7 +6,7 @@ const Footer = () => {
     <div className='flex items-center justify-center gap-4 py-3 mt-20'>
       <img src={assets.logo} alt="Logo" className='w-32 sm:w-40 lg:w-46' />
 
-      <p className='flex-1 pl-4 text-sm text-gray-500 max-sm:hidden'>Copyright @DreamCanvas 2026 || All rights reserved.</p>
+      <p className='flex-1 border-l border-gray-500 pl-4 text-sm text-gray-500 max-sm:hidden'>Copyright @DreamCanvas 2026 || All rights reserved.</p>
 
       <div className='flex gap-2.5'>
         <img src={assets.facebook_icon} alt="" />
