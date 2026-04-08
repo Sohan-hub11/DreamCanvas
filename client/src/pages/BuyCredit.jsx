@@ -1,19 +1,25 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { assets, plans } from '../assets/assets'
+import { AppContext } from '../context/appContext'
 
 const BuyCredit = () => {
+
+  const { user } = useContext(AppContext);
+
   return (
     <div className='min-h-[80vh] text-center pt-14 mb-10'>
-      <button className='border border-gray-400 bg-blue-500 hover:bg-blue-600 text-white px-9 py-3 rounded-full mb-6 transform hover:scale-110 transition duration-300'>Our Plan</button>
+      <button className='border border-gray-400 bg-blue-500 hover:bg-blue-600 text-white px-9 py-2 rounded-full mb-6 transform hover:scale-105 transition duration-500 cursor-pointer'>Our Plan</button>
       <h1 className='text-center text-3xl font-medium mb-6 sm:mb-10'>Choose Your Plan</h1>
 
-      <div>
+      <div className='flex flex-wrap justify-center gap-6 text-left'>
         {plans.map((plan, index) => (
-          <div key={index}>
-            <img src={assets.logo_icon} alt="" />
-            <p>{plan.id}</p>
-            <p>{plan.desc}</p>
-            <p>₹{plan.price} / {plan.credits} credits</p>
+          <div key={index} className='bg-white drop-shadow-sm border rounded-lg py-12 px-8 text-gray-600 hover:scale-105 transition-all duration-500'>
+            <img src={assets.logo_icon} alt="" width={40} />
+            <p className='mt-3 mb-1 font-semibold'>{plan.id}</p>
+            <p className='text-sm'>{plan.desc}</p>
+            <p className='mt-6'>
+              <span className='text-3xl font-medium'>₹{plan.price} </span>/ {plan.credits} credits</p>
+            <button className='w-full bg-gray-800 text-white mt-8 text-sm rounded-md py-2.5 min-w-52 cursor-pointer'>{user ? 'Purchased' : 'Get Started'}</button>
           </div>
         ))}
       </div>
