@@ -5,6 +5,7 @@ import Result from './pages/Result'
 import BuyCredit from './pages/BuyCredit'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import Login from './components/Login'
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
 
       <Navbar />
 
+      <Login />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/result" element={<Result />} />
