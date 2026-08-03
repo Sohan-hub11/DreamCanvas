@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { assets, plans } from '../assets/assets'
-import { AppContext } from '../context/appContext'
+import { AppContext } from '../context/AppContextProvider'
 
 const BuyCredit = () => {
 
@@ -27,4 +27,4 @@ const BuyCredit = () => {
   )
 }
 
-export default BuyCredit
+export default BuyCredit;

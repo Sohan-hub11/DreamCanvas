@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import { assets } from '../assets/assets'
 import { Link, useNavigate } from 'react-router-dom'
-import { AppContext } from '../context/appContext';
+import { AppContext } from '../context/AppContextProvider';
 
 const Navbar = () => {
 
-  const { user } = useContext(AppContext);
+  const { user, setShowLogin } = useContext(AppContext);
   const navigate = useNavigate();
 
   return (
@@ -37,7 +37,7 @@ const Navbar = () => {
             </div>
             : <div className='flex items-center gap-2 sm:gap-5'>
               <p onClick={() => navigate('/buy-credit')} className='cursor-pointer'>Pricing</p>
-              <button className='bg-zinc-800 text-white px-7 py-2 sm:px-7 text-sm rounded-full'>Get Started</button>
+              <button className='bg-zinc-800 text-white px-7 py-2 sm:px-7 text-sm rounded-full cursor-pointer' onClick={() => setShowLogin(true)}> Get Started</button>
             </div>
         }
 
