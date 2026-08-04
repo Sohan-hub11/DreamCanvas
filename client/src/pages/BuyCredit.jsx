@@ -1,15 +1,30 @@
 import React, { useContext } from 'react'
 import { assets, plans } from '../assets/assets'
 import { AppContext } from '../context/AppContextProvider'
+import { motion } from 'motion/react'
 
 const BuyCredit = () => {
 
   const { user } = useContext(AppContext);
 
   return (
-    <div className='min-h-[80vh] text-center pt-14 mb-10'>
-      <button className='border border-gray-400 bg-blue-500 hover:bg-blue-600 text-white px-9 py-2 rounded-full mb-6 transform hover:scale-105 transition duration-500 cursor-pointer'>Our Plan</button>
-      <h1 className='text-center text-3xl font-medium mb-6 sm:mb-10'>Choose Your Plan</h1>
+    <motion.div className='min-h-[80vh] text-center pt-14 mb-10'
+      initial={{ opacity: 0.2, y: 100 }}
+      transition={{ duration: 1 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+    >
+      <motion.button
+        initial={{ opacity: 0}}
+        animate={{ opacity: 1}}
+        transition={{ delay: 0.2, duration: 1.2 }}
+        className='border border-gray-400 bg-blue-500 hover:bg-blue-600 text-white px-9 py-2 rounded-full mb-6 transform hover:scale-105 transition duration-500 cursor-pointer'>Our Plan</motion.button>
+      <motion.h1 className='text-center text-3xl font-medium mb-6 sm:mb-10'
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.4, duration: 2 }}
+      >
+        Choose Your Plan</motion.h1>
 
       <div className='flex flex-wrap justify-center gap-6 text-left'>
         {plans.map((plan, index) => (
@@ -23,7 +38,7 @@ const BuyCredit = () => {
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   )
 }
 
