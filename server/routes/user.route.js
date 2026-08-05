@@ -1,21 +1,27 @@
-const express = require('express');
-const userRoutes = express.Router();
-const userController = require('../controllers/user.controller.js');
-
+import express from 'express';
+import * as userController from '../controllers/user.controller.js';
+import { authUser } from '../middlewares/auth.middleware.js';
+const Routes = express.Router();
 
 /**
  * @route   POST /users/register
  * @desc    Register a new user
  * @access  Public
  */
-userRoutes.post('/register', userController.registerUser);
+Routes.post('/register', userController.registerUser);
 
 /**
  * @route   POST /users/login
  * @desc    Login a user
  * @access  Public
  */
-userRoutes.post('/login', userController.loginUser);
+Routes.post('/login', userController.loginUser);
 
+/**
+ * @route   GET /users/credits
+ * @desc    Get User Credit Balance
+ * @access  Private
+ */
+Routes.get('/credits', authUser, userController.userCredits);
 
-module.exports = userRoutes;
+export default Routes;

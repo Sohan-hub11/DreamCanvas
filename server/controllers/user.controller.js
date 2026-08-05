@@ -1,11 +1,11 @@
-import userModel from "../models/user.model";
+import userModel from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 /**
  * @desc    Register a new user
  */
-const registerUser = async (req, res) => {
+export const registerUser = async (req, res) => {
   try{
     const { name, email, password } = req.body;
 
@@ -37,7 +37,7 @@ const registerUser = async (req, res) => {
 /**
  * @desc    Login a user
  */
-const loginUser = async (req, res) => {
+export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
     
@@ -60,4 +60,23 @@ const loginUser = async (req, res) => {
   }
 }
 
-module.exports = { registerUser, loginUser };
+/**
+ * @desc    Get User Credit Balance
+ */
+export const userCredits = async (req, res) => {
+  try{
+    const {userId} = req.body;
+
+    const user = await userModel.findById(userId);
+    
+    if(!user) {
+      return res.status(404).json({ success: false, message: "User not found" });
+    } 
+
+    return res.status(200).json({ success: true, credits: user.creditBalance, name: user.name });
+  
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({ success: false, message: error.message });
+  }
+}
